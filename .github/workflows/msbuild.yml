@@ -42,18 +42,11 @@ jobs:
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
-      
-    - name: Find built executable
-      run: |
-        echo "##[group]Build output listing"
-        dir /s /b "$(System.DefaultWorkingDirectory)\**\bin\${{ env.BUILD_CONFIGURATION }}\*.exe" || dir /s /b "$(System.DefaultWorkingDirectory)\**\bin\*.exe"
-        echo "##[endgroup]"
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: AMS2_SessionLogger
         path: |
-          **\bin\${{ env.BUILD_CONFIGURATION }}\*.exe
-          **\bin\*.exe
+          "D:\a\AMS2_SessionLogger\AMS2_SessionLogger\x64\Release\AMS2_SessionLogger.exe"
 
