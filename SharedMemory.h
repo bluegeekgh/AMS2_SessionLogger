@@ -30,7 +30,7 @@
 // Header version number to test against
 enum
 {
-  SHARED_MEMORY_VERSION = 13
+  SHARED_MEMORY_VERSION = 14
 };
 
 // Maximum allowed length of string
@@ -530,6 +530,10 @@ typedef struct
 	bool  mClutchSlipping;            // true if clutch is slipping (can be induced by overheating or wear)
 
   int mYellowFlagState;             // [ enum (Type#16) YellowFlagState ]
+
+  // v14
+  bool mSessionIsPrivate;
+  int mLaunchStage;
 
 } SharedMemory;
 
